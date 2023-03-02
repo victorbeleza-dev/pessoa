@@ -1,0 +1,17 @@
+<h1>Buscar Pessoa por CPF</h1>
+<div class="container-buscar-cpf">
+    <label>
+        CPF:
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input type="text" [(ngModel)]="cpf" name="cpf" placeholder="1234656" required>
+        </mat-form-field>
+    </label>
+      
+    <button mat-raised-button color="primary" type="button" (click)="buscar()">Buscar</button>
+      
+    <div *ngIf="pessoa">
+        <p>Nome: {{ pessoa.nome }}</p>
+        <p>CPF: {{ pessoa.cpf }}</p>
+    </div>
+</div>

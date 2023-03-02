@@ -1,0 +1,15 @@
+<h1>Editar Pessoa</h1>
+
+<form (submit)="atualizar()">
+  <label>
+    Nome:
+    <input type="text" [(ngModel)]="pessoa.nome" name="nome" value="nome" required>
+  </label>
+
+  <label>
+    CPF:
+    <input type="text" [(ngModel)]="pessoa.cpf" name="cpf" value="cpf" required>
+  </label>
+
+  <button type="submit">Atualizar</button>
+</form>

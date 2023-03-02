@@ -1,0 +1,21 @@
+<h1>Cadastrar Pessoa</h1>
+
+<form (submit)="salvar()">   
+  <label>
+    Nome:
+    <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input type="text" [(ngModel)]="pessoa.nome" name="nome" required placeholder="Fulano Bezerra">
+    </mat-form-field>
+  </label>
+
+  <label>
+    CPF:
+    <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input type="text" [(ngModel)]="pessoa.cpf" name="cpf" placeholder="1234656" required>
+    </mat-form-field>
+  </label>
+
+  <button type="submit">Cadastrar</button>
+</form>
