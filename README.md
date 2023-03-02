@@ -1,27 +1,73 @@
-# MinhaAplicacao
+# Instruções para rodar a aplicação angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+* 1 - Use o comando `ng serve` . Entre no navegador na pagina `http://localhost:4200/`
 
-## Development server
+# Instruções para rodar a aplicação springboot
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+* 1 - Clone o repositório;
+* 2 - Entre na primeira pasta;
+* 3 - Abra o bash, e digite mvn clean install para instalar as dependencias do projeto;
+* 4 - Digite mvn spring-boot:run para rodar o programa;
 
-## Code scaffolding
+## Rotas para consultas
+* A rota para realizar a consulta de todos os registros é `localhost:8080/pessoas` usando o metodo `GET` irá retornar como no exemplo abaixo;
+```
+[
+    {
+        "id": 1,
+        "nome": "Fulano",
+        "cpf": "12345678900"
+    }
+]
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* A segunda consulta é reponsavel por buscar pelo id e é necessario colocar o id na consulta exeplo `localhost:8080/pessoas/1` usando o metodo `GET`  irá retornar como no exemplo abaixo:
+```
+{
+    "id": 1,
+    "nome": "Fulano",
+    "cpf": "12345678900"
+}
+```
 
-## Build
+* A Terceira consulta é responsavel por buscar a pessoa pelo cpf, é necessario saber o cpf para realizar a consulta por exemplo `localhost:8080/pessoas/cpf/12345678900` usando o metodo `GET` irá retornar como no exemplo abaixo:
+```
+{
+    "id": 1,
+    "nome": "Fulano",
+    "cpf": "12345678900"
+}
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Rotas para cadastrar e atualizar uma pessoa
+* Para cadastrar uma nova pessoa é necessario mandar um request do tipo post para a rota `localhost:8080/pessoas` usando método `POST` com o body abaixo:
+```
+{
+    "nome": "Fulano",
+    "cpf": "12345678900"
+}
+```
+Irá retornar o seguinte json:
+```
+{
+    "id": 1,
+    "nome": "Fulano",
+    "cpf": "12345678900"
+}
+```
 
-## Running unit tests
+* Para atualizar uma pessoa é necessario mandar o id no request como por exemplo `localhost:8080/pessoas/1` usando o método `PUT` com o body abaixo:
+```
+{
+    "nome": "Fulano",
+    "cpf": "12345678900"
+}
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Rota para deletar uma pessoa
+* Para deletar uma pessoa é necessario somente mandar o id como por exemplo `localhost:8080/pessoas/1` usando o método `DELETE` essa requisição não irá retornar nada somente o status `204`;
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Considerações
+* Os testes unitários foram implementados usando Junit;
+* O banco de dados H2 é ultilizado tanto nos testes quanto na api;
+* O primeiro serviço sobe na porta **4200** e o segundo na **8080**;
